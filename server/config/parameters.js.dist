@@ -1,0 +1,6 @@
+module.exports = {
+    mongodb_host: 'localhost',
+    mongodb_name: 'Bump',
+
+    secret: 'secret'
+};
