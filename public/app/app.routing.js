@@ -22,5 +22,10 @@
                         controllerAs: 'ctrl'
                     });
             }
-        ]);
+        ])
+        .run(['$rootScope', '$state', function($rootScope, $state) {
+            $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+
+            });
+        }]);
 })();
