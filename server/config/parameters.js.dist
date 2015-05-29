@@ -2,5 +2,8 @@ module.exports = {
     mongodb_host: 'localhost',
     mongodb_name: 'Bump',
 
+    facebook_client_id: '477371452438379',
+    facebook_client_secret: 'client_secret',
+
     secret: 'secret'
 };

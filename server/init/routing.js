@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var auth = require('../bundle/auth/auth');
 
 module.exports = init;
 
@@ -9,6 +10,7 @@ function init(app, secret) {
         res.render('index');
     });
 
+    app.use('/api', auth);
     app.use(express.static(path.join(__dirname, '../../public/assets')));
     app.use(notFound);
     app.use(logErrors);
