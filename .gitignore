@@ -2,6 +2,7 @@
 node_modules/
 bower_components/
 server/config/parameters.js
+public/assets/compiled/
 *~
 *.log
 *.lock
