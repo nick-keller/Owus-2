@@ -1,0 +1,60 @@
+@import "mixins/all";
+
+.toolbar {
+    @duration : .5s;
+
+    background: @primary;
+    color: @white;
+    height: @toolbarHeight;
+    line-height: @toolbarHeight;
+    .shadow(2);
+    z-index: @toolbar-z;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    button {
+        .resize(@toolbarHeight);
+        display: inline-block;
+        text-align: center;
+        line-height: @toolbarHeight;
+        border: none;
+        color: @white;
+        background: none;
+    }
+
+    .sidebar-dismiss {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: @sidebar-dismiss-z;
+        background: rgba(0,0,0,.5);
+        .transition(~"all @{duration} ease");
+
+        &.hidden {
+            visibility: hidden;
+            .opacity(0);
+            .transition(~"all @{duration} ease, visibility 0s @{duration}");
+        }
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 20%;
+        bottom: 0;
+        z-index: @sidebar-z;
+        background: @white;
+        .shadow(4);
+        .transition(~"all @{duration} ease");
+
+        &.hidden {
+            .transform(~"translateX(-100%)");
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@import "mixins/all";
+
+.btn {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    text-align: center;
+    .box-sizing();
+    .transition(all .3s);
+
+    height: 36px;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 8px;
+    margin: 0 8px;
+
+    &:focus, &:hover {
+        background: fade(#999999, 10%);
+    }
+
+    &:active {
+        background: fade(#999999, 20%);
+    }
+
+    &.primary {
+        color: @primary;
+    }
+
+    &.raised {
+        .shadow(1);
+        .border-radius(2px);
+        border: solid 1px @dark-white;
+        background: @white;
+
+        &.primary {
+            background: @primary;
+            color: @white;
+            border: none;
+
+            &:focus, &:hover {
+                background: @primary-dark;
+            }
+        }
+
+        &.accent {
+            background: @accent;
+            color: @white;
+            border: none;
+
+            &:focus, &:hover {
+                background: @accent-dark;
+            }
+        }
+
+        &:active, &.primary:active {
+            .shadow(2);
+        }
+    }
+
+    &.floating {
+        min-width: 0;
+        background: @accent;
+        color: @white;
+        .resize(56px);
+        .border-radius();
+        .shadow(3);
+        padding: 0;
+        margin: 0;
+        line-height: 56px;
+    }
+}
