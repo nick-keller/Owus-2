@@ -5,6 +5,7 @@ module.exports.notFound = notFound;
 module.exports.accessTokenForged = accessTokenForged;
 module.exports.userNotLogedIn = userNotLogedIn;
 module.exports.tokenExpired = tokenExpired;
+module.exports.facebookError = facebookError;
 
 function notFound(what) {
     return {
@@ -18,6 +19,15 @@ function missingParameter(parameter) {
         status: 400,
         error: 'missing_parameter',
         message: 'Required parameter is missing: ' + parameter
+    };
+}
+
+function facebookError(response) {
+    return {
+        status: 500,
+        error: 'facebook_error',
+        message: 'Facebook did not answer as expected.',
+        facebook_response: response
     };
 }
 

@@ -29,6 +29,12 @@ var UserSchema = new Schema({
     },
     access_token: {
         type: String
+    },
+    friends: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     }
 });
 
