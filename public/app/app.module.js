@@ -3,7 +3,9 @@
 
     var modules = [
         'ui.router',
-        'templates'
+        'templates',
+        'ngCookies',
+        'angular-jwt'
     ];
     angular.module('app', modules);
 })();
