@@ -49,7 +49,7 @@ function auth(req, res, next) {
                        return friend.id;
                    });
 
-                   User.find({facebook_id: friendsFacebookIds}).select('_id').exec(function(err, ids) {
+                   User.find({facebook_id: {$in: friendsFacebookIds}}).select('_id').exec(function(err, ids) {
                        if(err) {
                            return next(api.mongooseError(err));
                        }

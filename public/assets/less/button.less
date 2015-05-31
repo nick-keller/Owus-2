@@ -29,6 +29,14 @@
         color: @primary;
     }
 
+    &.accent {
+        color: @accent;
+    }
+
+    &.white {
+        color: @white;
+    }
+
     &.raised {
         .shadow(1);
         .border-radius(2px);
@@ -36,7 +44,7 @@
         background: @white;
 
         &:focus, &:hover {
-            background: fade(#999999, 10%);
+            background: #F0F0F0;
         }
 
         &.primary {

@@ -18,6 +18,7 @@
 
         vm.sidebarHidden = true;
         vm.addBtnHidden = true;
+        vm.toolbarHidden = false;
         vm.addState = null;
         vm.title = '';
 
@@ -27,6 +28,7 @@
             vm.title = toState.data.title;
             vm.addBtnHidden = !toState.data.add;
             vm.addState =  toState.data.add;
+            vm.toolbarHidden =  toState.data.toolbar === false;
         });
 
         function add() {

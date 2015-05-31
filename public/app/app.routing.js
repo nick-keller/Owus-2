@@ -13,7 +13,10 @@
                         url: '/auth',
                         templateUrl: 'auth/auth.html',
                         controller: 'AuthController',
-                        controllerAs: 'ctrl'
+                        controllerAs: 'ctrl',
+                        data: {
+                            toolbar: false
+                        }
                     })
                     .state('debts', {
                         url: '/',
@@ -44,10 +47,7 @@
                     // User wants to go on a page but is not logged in
 
                     e.preventDefault();
-
-                    if(fromState.name === '') {
-                        $state.go('auth');
-                    }
+                    $state.go('auth');
                 }
 
                 if(user.isLoggedIn() && toState.name === 'auth') {

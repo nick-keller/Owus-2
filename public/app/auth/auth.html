@@ -1,5 +1,12 @@
 <section class="login">
     <h1>Owus</h1>
+
+    <div class="field">
+        <input class="has-floating" ng-model="accessToken">
+        <label class="floating">Access token</label>
+    </div>
+    <button class="btn white" ng-click="ctrl.manualLogin(accessToken)">Connexion avec ce token</button>
+
     <button class="btn raised" ng-click="ctrl.login()">
         <i class="fa fa-facebook"></i>
         Connexion

@@ -10,11 +10,16 @@
     .shadow(2);
     z-index: @toolbar-z;
     font-size: 24px;
+    .transition(all .3s ease);
 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+
+    &.hidden {
+        top: -@toolbarHeight;
+    }
 
     button {
         .resize(@toolbarHeight);

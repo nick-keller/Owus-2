@@ -8,10 +8,15 @@
         var vm = this;
 
         vm.login = facebookAuth.login;
+        vm.manualLogin = manualLogin;
 
         facebookAuth
             .init()
             .onLogin(onLogin);
+
+        function manualLogin(accessToken) {
+            onLogin({accessToken: accessToken});
+        }
 
         function onLogin(response) {
             $http.post('/api/auth', {access_token: response.accessToken})
