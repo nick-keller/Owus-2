@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .service('user', ['$cookies', 'jwtHelper', user]);
+        .service('user', ['$cookies', 'jwtHelper', '$http', user]);
 
-    function user($cookies, jwtHelper) {
+    function user($cookies, jwtHelper, $http) {
         var _self = this;
 
         _self.current = null;
@@ -30,7 +30,20 @@
                 return;
             }
 
-            _self.current = jwtHelper.decodeToken(accessToken).user;
+            if(_self.current === null) {
+                _self.current = jwtHelper.decodeToken(accessToken).user;
+                _self.current.friends = [];
+
+                $http.get('/api/me/friends')
+                    .success(function(data) {
+                        data.forEach(function(friend) {
+                            _self.current.friends.push(friend);
+                        });
+                    })
+                    .error(function(data) {
+                        _self.current = null;
+                    });
+            }
         }
     }
 })();
