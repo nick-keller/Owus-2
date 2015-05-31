@@ -1,16 +1,20 @@
 var express = require('express');
 var path = require('path');
 var auth = require('../bundle/auth/auth');
+var restful = require('../bundle/api/restful');
 
 module.exports = init;
 
 function init(app, secret) {
+
+    restful.init();
 
     app.get('/', function(req, res) {
         res.render('index');
     });
 
     app.use('/api', auth);
+    app.use('/api', restful);
     app.use(express.static(path.join(__dirname, '../../public/assets')));
     app.use(notFound);
     app.use(logErrors);
