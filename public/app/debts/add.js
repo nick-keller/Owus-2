@@ -8,5 +8,9 @@
         var vm = this;
 
         vm.action = 'Ajouter';
+        vm.expense = {
+            payer: null,
+            recipients: []
+        };
     }
 })();

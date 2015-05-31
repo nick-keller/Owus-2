@@ -26,7 +26,6 @@ input, .input {
         font-size: 12px;
         .transform(~"translateY(-56px)");
         .transition(all .15s);
-        left: 0;
     }
 
     &.empty + label.floating {
@@ -48,6 +47,8 @@ input, .input {
 .input {
     min-height: 40px;
     height: auto;
+    line-height: 40px;
+    padding: 10px 0 4px 0;
 }
 
 .field {
@@ -57,6 +58,7 @@ input, .input {
         + label.floating {
             .transform(none);
             top: -7px;
+            left: 0;
         }
 
         &.empty + label.floating {
@@ -67,6 +69,19 @@ input, .input {
         &:focus + label.floating {
             .transform(none);
             top: -7px;
+        }
+    }
+
+    .full-width & {
+        input, .input {
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 0;
+            margin-top: 16px;
+
+            + label.floating {
+                left: 16px;
+            }
         }
     }
 }

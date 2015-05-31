@@ -11,6 +11,24 @@
     .shadow(4);
     .border-radius(2px);
     line-height: 1.6em;
+    .transition(~"all .3s ease");
+    transform-origin: top;
+
+    &.hidden {
+        .transform(~"scale(.5) translateY(-50%)");
+        .opacity(0);
+        visibility: hidden;
+        .transition(~"all .3s ease, visibility 0s .3s");
+    }
+
+    &.top {
+        .transform(none);
+        top: @toolbarHeight + 16px;
+
+        &.hidden {
+            .transform(~"scale(.5)");
+        }
+    }
 
     h1, h2, h3 {
         margin: 24px 24px 20px 24px;
@@ -54,6 +72,23 @@
                 margin: 0;
             }
         }
+    }
+
+    *:first-child.content {
+        margin-top: 24px;
+
+        &.overflow {
+            margin-top: 0;
+            padding-top: 24px;
+            border-top: none;
+        }
+    }
+
+    *:first-child.input {
+        margin: 24px 0 20px 0;
+        padding: 0;
+        border-left: solid 24px transparent;
+        border-right: solid 24px transparent;
     }
 }
 

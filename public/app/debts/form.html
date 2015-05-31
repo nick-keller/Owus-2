@@ -1,6 +1,6 @@
 <section>
     <div class="field">
-        <input class="has-floating">
+        <button class="input has-floating" user-picker ng-model="ctrl.expense.payer"></button>
         <label class="floating">Qui paye ?</label>
     </div>
 
@@ -15,9 +15,7 @@
     </div>
 
     <div class="field">
-        <button class="input has-floating empty" user-picker></button>
+        <button class="input has-floating" user-picker ng-model="ctrl.expense.recipients"></button>
         <label class="floating">Pour qui ?</label>
     </div>
-
-    <button class="btn raised">{{ ctrl.action }}</button>
 </section>

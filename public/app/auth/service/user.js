@@ -12,6 +12,7 @@
         _self.isLoggedIn = isLoggedIn;
         _self.logIn = logIn;
         _self.checkStatus = checkStatus;
+        _self.getFromId = getFromId;
 
         function isLoggedIn() {
             return _self.current !== null;
@@ -44,6 +45,20 @@
                         _self.current = null;
                     });
             }
+        }
+
+        function getFromId(id, users) {
+            if(!users) {
+                users = _self.current.friends;
+            }
+
+            for(var i=0; i<users.length; ++i) {
+                if(users[i]._id === id) {
+                    return users[i];
+                }
+            }
+
+            return null;
         }
     }
 })();

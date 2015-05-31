@@ -1,16 +1,20 @@
-<div class="dialog-dismiss"></div>
-<div class="dialog">
-    <h3>Title super long de la mort qui tue</h3>
+<a class="chip" ng-repeat="user in ctrl.selected">
+    <div picture="user"></div>
+    {{ user.name }}
+</a>
+
+<div class="dialog-dismiss" hide="ctrl.dialogHidden" ng-click="ctrl.dialogHidden = true;$event.stopPropagation()"></div>
+<div class="dialog top" hide="ctrl.dialogHidden">
+    <input ng-model="filter" placeholder="Rechercher..." class="input">
+
     <div class="content overflow">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus orci et ante scelerisque scelerisque.
-            Sed elit dolor, semper non porttitor nec, pharetra vel erat.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus orci et ante scelerisque scelerisque.
-            Sed elit dolor, semper non porttitor nec, pharetra vel erat.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus orci et ante scelerisque scelerisque.
-            Sed elit dolor, semper non porttitor nec, pharetra vel erat.</p>
+        <a class="chip" active="ctrl.isSelected(user)" ng-repeat="user in ctrl.users | filter:{name:filter}" ng-click="ctrl.select(user)">
+            <div picture="user"></div>
+            {{ user.name }}
+        </a>
     </div>
+
     <div class="actions">
-        <a class="btn">Cancel</a>
-        <a class="btn">OK</a>
+        <a class="btn primary" ng-click="ctrl.dialogHidden = true;$event.stopPropagation()">OK</a>
     </div>
 </div>
