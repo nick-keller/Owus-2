@@ -11,18 +11,32 @@
                     model: '=ngModel',
                     userPicker: '=userPicker'
                 },
+                require: 'ngModel',
                 controller: 'UserPickerController',
                 controllerAs: 'ctrl',
                 bindToController: true,
-                link: function(scope, element, attr) {
+                link: function(scope, element, attr, ngModelController) {
                     element.on('click', function() {
                         scope.$apply(function() {
                             scope.ctrl.dialogHidden = false;
                         });
                     });
 
+                    element.on('blur', function() {
+                        scope.$apply(function() {
+                            ngModelController.$setTouched();
+                        });
+                    });
+
                     scope.$watchCollection(function(){return scope.ctrl.selected}, function(value) {
                         element[value.length ? 'removeClass' : 'addClass']('empty');
+                        if(attr.required) {
+                            if(value.length > 0) {
+                                ngModelController.$setValidity('empty', true);
+                            } else {
+                                ngModelController.$setValidity('empty', false);
+                            }
+                        }
                     });
                 }
             };

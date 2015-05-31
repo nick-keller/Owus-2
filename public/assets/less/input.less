@@ -34,13 +34,17 @@ input, .input {
     }
 
     &:focus {
-        .box-shadow(0 -2px @accent inset);
+        .box-shadow(0 -2px @primary inset);
 
         + label.floating {
-            color: @accent;
+            color: @primary;
             font-size: 12px;
             .transform(~"translateY(-56px)");
         }
+    }
+
+    &.ng-touched.ng-invalid {
+        .box-shadow(0 -2px @red inset);
     }
 }
 
@@ -49,6 +53,15 @@ input, .input {
     height: auto;
     line-height: 40px;
     padding: 10px 0 4px 0;
+}
+
+.error {
+    color: @red;
+    font-size: 12px;
+
+    .ng-valid ~ & {
+        display: none;
+    }
 }
 
 .field {
