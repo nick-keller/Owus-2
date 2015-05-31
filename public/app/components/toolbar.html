@@ -5,7 +5,18 @@
     {{ ctrl.title }}
 
     <div class="sidebar-dismiss" hide="ctrl.sidebarHidden" ng-click="ctrl.sidebarHidden = true"></div>
-    <div class="sidebar" hide="ctrl.sidebarHidden"></div>
+    <div class="sidebar" hide="ctrl.sidebarHidden">
+        <div class="list iconic" ng-click="ctrl.sidebarHidden = true">
+            <a ui-sref="debts">
+                <i class="material-icons">account_balance_wallet</i>
+                Dettes
+            </a>
+            <a ui-sref="expenses">
+                <i class="material-icons">access_time</i>
+                Historique
+            </a>
+        </div>
+    </div>
 
     <a class="btn floating hidden" hide="ctrl.addBtnHidden" ng-click="ctrl.add()">
         <i class="material-icons">add</i>

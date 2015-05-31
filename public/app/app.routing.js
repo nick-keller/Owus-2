@@ -25,17 +25,27 @@
                         controllerAs: 'ctrl',
                         data: {
                             title: 'Owus',
-                            add: 'debts_add'
+                            add: 'expenses_add'
                         }
                     })
-                    .state('debts_add', {
-                        url: '/debts/add',
-                        templateUrl: 'debts/form.html',
-                        controller: 'DebtsAddController',
+                    .state('expenses', {
+                        url: '/expenses',
+                        templateUrl: 'expenses/expenses.html',
+                        controller: 'ExpensesController',
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Historique',
+                            add: 'expenses_add'
+                        }
+                    })
+                    .state('expenses_add', {
+                        url: '/expenses/add',
+                        templateUrl: 'expenses/form.html',
+                        controller: 'ExpensesAddController',
                         controllerAs: 'ctrl',
                         data: {
                             title: 'Ajouter',
-                            back: 'debts',
+                            back: 'expenses',
                             valid: true
                         }
                     });
