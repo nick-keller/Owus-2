@@ -29,6 +29,32 @@
         border: none;
         color: @white;
         background: none;
+        .transition(all .4s);
+
+        &.hidden {
+            .opacity(0);
+            .transform(~"rotate(-90deg)");
+            .transition(~"all .4s, visibility 0s .4s");
+            visibility: hidden;
+        }
+
+        &.back {
+            position: absolute;
+            left: 0;
+
+            &.hidden {
+                .transform(~"rotate(90deg)");
+            }
+        }
+
+        &.valid {
+            position: absolute;
+            right: 0;
+
+            &.hidden {
+                .transform(none);
+            }
+        }
     }
 
     .sidebar-dismiss {

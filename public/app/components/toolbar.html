@@ -1,5 +1,7 @@
 <nav class="toolbar" hide="ctrl.toolbarHidden">
-    <button class="material-icons" toggle="ctrl.sidebarHidden">menu</button>
+    <button class="material-icons" hide="!ctrl.backHidden" toggle="ctrl.sidebarHidden">menu</button>
+    <button class="material-icons back" hide="ctrl.backHidden" ng-click="ctrl.back()">arrow_back</button>
+    <button class="material-icons valid" hide="ctrl.validHidden" ng-click="ctrl.valid()">check</button>
     {{ ctrl.title }}
 
     <div class="sidebar-dismiss" hide="ctrl.sidebarHidden" ng-click="ctrl.sidebarHidden = true"></div>

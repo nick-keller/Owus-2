@@ -34,7 +34,9 @@
                         controller: 'DebtsAddController',
                         controllerAs: 'ctrl',
                         data: {
-                            title: 'Ajouter'
+                            title: 'Ajouter',
+                            back: 'debts',
+                            valid: true
                         }
                     });
             }

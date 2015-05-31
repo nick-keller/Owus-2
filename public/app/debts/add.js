@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('DebtsAddController', DebtsAddController);
+        .controller('DebtsAddController', ['$rootScope', '$scope', DebtsAddController]);
 
-    function DebtsAddController() {
+    function DebtsAddController($rootScope, $scope) {
         var vm = this;
 
         vm.action = 'Ajouter';
@@ -12,5 +12,11 @@
             payer: null,
             recipients: []
         };
+
+        var submitListener = $rootScope.$on('validateDialog', function() {
+            console.log('submit');
+        });
+
+        $scope.$on('$destroy', submitListener);
     }
 })();
