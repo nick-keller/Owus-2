@@ -31,6 +31,7 @@ function notFound(req, res, next) {
 
 function logErrors(err, req, res, next) {
     if(err.stack) {
+        console.log('bonjour', err);
         console.error(err.stack);
     }
 

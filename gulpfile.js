@@ -13,6 +13,7 @@ var paths = {
         'bower_components/angular/angular.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/angular-cookies/angular-cookies.js',
+        'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-jwt/dist/angular-jwt.js',
         'public/assets/compiled/temp/*.js',
         'public/app/app.module.js',

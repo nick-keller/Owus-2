@@ -2,19 +2,25 @@
     'use strict';
 
     angular.module('app')
-        .controller('DebtsAddController', ['$rootScope', '$scope', DebtsAddController]);
+        .controller('DebtsAddController', ['$rootScope', '$scope', 'Expense', '$state', DebtsAddController]);
 
-    function DebtsAddController($rootScope, $scope) {
+    function DebtsAddController($rootScope, $scope, Expense, $state) {
         var vm = this;
 
         vm.action = 'Ajouter';
-        vm.expense = {
+        vm.expense = new Expense({
             payer: null,
-            recipients: []
-        };
+            recipients: [],
+            amount: null,
+            title: null
+        });
 
         var submitListener = $rootScope.$on('validateDialog', function() {
-            console.log('submit');
+            vm.expense.$save(function success() {
+                $state.go('debts');
+            }, function error() {
+                console.log('error');
+            });
         });
 
         $scope.$on('$destroy', submitListener);
