@@ -1,7 +1,11 @@
 <nav class="toolbar">
     <button class="material-icons" toggle="ctrl.sidebarHidden">menu</button>
-    Owus
+    {{ ctrl.title }}
 
     <div class="sidebar-dismiss" hide="ctrl.sidebarHidden" ng-click="ctrl.sidebarHidden = true"></div>
     <div class="sidebar" hide="ctrl.sidebarHidden"></div>
+
+    <a class="btn floating hidden" hide="ctrl.addBtnHidden" ng-click="ctrl.add()">
+        <i class="material-icons">add</i>
+    </a>
 </nav>

@@ -1,6 +1,6 @@
 module.exports = {
     mongodb_host: 'localhost',
-    mongodb_name: 'Bump',
+    mongodb_name: 'Owus',
 
     facebook_client_id: '477371452438379',
     facebook_client_secret: 'client_secret',

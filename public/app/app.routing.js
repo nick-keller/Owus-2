@@ -19,7 +19,20 @@
                         url: '/',
                         templateUrl: 'debts/debts.html',
                         controller: 'DebtsController',
-                        controllerAs: 'ctrl'
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Owus',
+                            add: 'debts_add'
+                        }
+                    })
+                    .state('debts_add', {
+                        url: '/debts/add',
+                        templateUrl: 'debts/form.html',
+                        controller: 'DebtsAddController',
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Ajouter'
+                        }
                     });
             }
         ])

@@ -9,6 +9,7 @@
     "angular": "~1.4.0",
     "angular-ui-router": "~0.2.15",
     "angular-cookies": "~1.4.0",
-    "angular-jwt": "~0.0.8"
+    "angular-jwt": "~0.0.8",
+    "jquery": "~2.1.4"
   }
 }

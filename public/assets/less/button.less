@@ -35,6 +35,10 @@
         border: solid 1px @dark-white;
         background: @white;
 
+        &:focus, &:hover {
+            background: fade(#999999, 10%);
+        }
+
         &.primary {
             background: @primary;
             color: @white;
@@ -55,7 +59,7 @@
             }
         }
 
-        &:active, &.primary:active {
+        &:active {
             .shadow(2);
         }
     }
@@ -66,9 +70,28 @@
         color: @white;
         .resize(56px);
         .border-radius();
-        .shadow(3);
+        .shadow(2);
         padding: 0;
         margin: 0;
         line-height: 56px;
+
+        &:focus, &:hover {
+            background: @accent-dark;
+        }
+
+        &:active {
+            .shadow(3);
+        }
+
+        i {
+            .transition(all .3s);
+        }
+
+        &.hidden {
+            .transform(~"scale(0)");
+            i {
+                .transform(~"rotate(60deg)");
+            }
+        }
     }
 }

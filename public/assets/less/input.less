@@ -1,0 +1,71 @@
+@import "mixins/all";
+
+input, .input {
+    display: block;
+    height: 48px - 8px;
+    margin-bottom: 8px;
+    line-height: 48px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    .box-sizing();
+    .box-shadow(0 -1px @light-gray inset);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    .transition(all .15s);
+
+    &.has-floating {
+        margin-top: 72px - 48px;
+    }
+
+    + label.floating {
+        position: absolute;
+        color: @gray;
+        font-size: 12px;
+        .transform(~"translateY(-56px)");
+        .transition(all .15s);
+    }
+
+    &.empty + label.floating {
+        font-size: 16px;
+        .transform(~"translateY(-33px)");
+    }
+
+    &:focus {
+        .box-shadow(0 -2px @accent inset);
+
+        + label.floating {
+            color: @accent;
+            font-size: 12px;
+            .transform(~"translateY(-56px)");
+        }
+    }
+}
+
+.input {
+    min-height: 40px;
+    height: auto;
+}
+
+.field {
+    position: relative;
+
+    input, .input {
+        + label.floating {
+            .transform(none);
+            top: -7px;
+        }
+
+        &.empty + label.floating {
+            .transform(none);
+            top: 15px;
+        }
+
+        &:focus + label.floating {
+            .transform(none);
+            top: -7px;
+        }
+    }
+}
