@@ -1,0 +1,5 @@
+<a ng-repeat="tab  in ctrl.tabs" ng-class="{active: ctrl.isSelected(tab.id)}" ng-click="ctrl.select(tab.id)">
+    {{ tab.name }}
+</a>
+
+<div class="indicator"></div>

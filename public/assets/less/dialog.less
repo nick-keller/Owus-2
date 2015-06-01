@@ -2,7 +2,7 @@
 
 .dialog {
     position: fixed;
-    z-index: @dialog-z;
+    .zindex("dialog");
     left: 40px;
     right: 40px;
     top: 50%;
@@ -98,7 +98,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: @dialog-dismiss-z;
+    .zindex('dialog-dismiss');
 
     &.hidden {
         visibility: hidden;

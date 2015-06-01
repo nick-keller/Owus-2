@@ -1,6 +1,20 @@
-@toolbar-z: 1;
-@add-btn-z: 2;
-@dialog-dismiss-z: 3;
-@dialog-z: 4;
-@sidebar-dismiss-z: 5;
-@sidebar-z: 6;
+@z-index-order: 'toolbar', 'add-btn', 'tabs', 'dialog-dismiss', 'dialog', 'sidebar-dismiss', 'sidebar';
+
+.zindex(@elementName) {
+
+    .loop(@elementName, @counter) when (@counter > 0) {
+
+        .loop(@elementName, @counter - 1);
+        .pickIndex(@elementName, @counter);
+
+    }
+
+    .loop(@elementName, length(@z-index-order));
+
+    .pickIndex(@elementName, @counter) when (extract(@z-index-order, @counter) = @elementName) {
+
+        z-index: @counter;
+
+    }
+
+}

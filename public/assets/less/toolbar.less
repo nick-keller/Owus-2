@@ -1,14 +1,12 @@
 @import "mixins/all";
 
 .toolbar {
-    @duration : .5s;
-
     background: @primary;
     color: @white;
     height: @toolbarHeight;
     line-height: @toolbarHeight;
     .shadow(2);
-    z-index: @toolbar-z;
+    .zindex("toolbar");
     font-size: 24px;
     .transition(all .3s ease);
 
@@ -57,44 +55,11 @@
         }
     }
 
-    .sidebar-dismiss {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: @sidebar-dismiss-z;
-        background: rgba(0,0,0,.5);
-        .transition(~"all @{duration} ease");
-
-        &.hidden {
-            visibility: hidden;
-            .opacity(0);
-            .transition(~"all @{duration} ease, visibility 0s @{duration}");
-        }
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 20%;
-        bottom: 0;
-        z-index: @sidebar-z;
-        background: @white;
-        .shadow(4);
-        .transition(~"all @{duration} ease");
-
-        &.hidden {
-            .transform(~"translateX(-100%)");
-        }
-    }
-
     .btn.floating {
         position: fixed;
         bottom: 16px;
         right: 16px;
-        z-index: @add-btn-z;
+        .zindex('add-btn');
 
         .transition(~"all .3s, transform .4s ease");
 
@@ -102,5 +67,39 @@
             .transform(~"translateY(-44px)");
             .transition(~"all .3s, transform .5s ease");
         }
+    }
+}
+@duration : .5s;
+
+.sidebar-dismiss {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .zindex('sidebar-dismiss');
+    background: rgba(0,0,0,.5);
+    .transition(~"all @{duration} ease");
+
+    &.hidden {
+        visibility: hidden;
+        .opacity(0);
+        .transition(~"all @{duration} ease, visibility 0s @{duration}");
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 20%;
+    bottom: 0;
+    .zindex('sidebar');
+    background: @white;
+    .shadow(4);
+    .transition(~"all @{duration} ease");
+
+    &.hidden {
+        .transform(~"translateX(-100%)");
     }
 }
