@@ -18,7 +18,10 @@
         </div>
     </div>
 
-    <a class="btn floating hidden" hide="ctrl.addBtnHidden" ng-click="ctrl.add()">
+    <a class="btn floating hidden" ng-class="{lift:!ctrl.snackbarHidden}" hide="ctrl.addBtnHidden" ng-click="ctrl.add()">
         <i class="material-icons">add</i>
     </a>
 </nav>
+<div class="snackbar hidden" hide="ctrl.snackbarHidden">
+    {{ ctrl.snackbarMessage }}
+</div>

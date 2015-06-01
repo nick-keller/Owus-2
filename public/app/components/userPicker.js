@@ -46,12 +46,18 @@
         var vm = this;
 
         vm.dialogHidden = true;
-        vm.users = vm.userPicker ? vm.userPicker : user.current.friends;
+        vm.users = vm.userPicker ? vm.userPicker : getUserAndItsFriends();
         vm.multiple = Array.isArray(vm.model);
         vm.selected = [];
 
         vm.isSelected = isSelected;
         vm.select = select;
+
+        if(!vm.userPicker) {
+            $scope.$watchCollection(function(){return user.current.friends}, function(value) {
+                vm.users = getUserAndItsFriends();
+            });
+        }
 
         // Bind model to view
         if(vm.multiple) {
@@ -82,6 +88,10 @@
                 vm.model = vm.selected.length ? vm.selected[0]._id : null;
             }
         });
+
+        function getUserAndItsFriends() {
+            return user.current.friends.concat(user.current);
+        }
 
         function isSelected(u) {
             return !!~vm.selected.indexOf(u);

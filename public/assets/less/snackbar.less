@@ -1,0 +1,19 @@
+@import "mixins/all";
+
+.snackbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #323232;
+    font-size: 14px;
+    padding: 14px 24px;
+    color: @white;
+    .transition(~"all .5s ease, color .5s ease .1s");
+
+    &.hidden {
+        color: #323232;
+        .transition(~"all .4s ease, color 0s ease .4s");
+        .transform(~"translateY(100%)");
+    }
+}

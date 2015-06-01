@@ -95,5 +95,12 @@
         bottom: 16px;
         right: 16px;
         z-index: @add-btn-z;
+
+        .transition(~"all .3s, transform .4s ease");
+
+        &.lift {
+            .transform(~"translateY(-44px)");
+            .transition(~"all .3s, transform .5s ease");
+        }
     }
 }

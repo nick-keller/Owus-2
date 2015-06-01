@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('ToolbarController', ['$rootScope', '$state', ToolbarController])
+        .controller('ToolbarController', ['$rootScope', '$state', 'snackbar', ToolbarController])
         .directive('toolbar', function() {
             return {
                 templateUrl: 'components/toolbar.html',
@@ -13,7 +13,7 @@
             };
         });
 
-    function ToolbarController($rootScope, $state) {
+    function ToolbarController($rootScope, $state, snackbar) {
         var vm = this;
 
         vm.sidebarHidden = true;
@@ -24,6 +24,8 @@
         vm.addState = null;
         vm.title = '';
         vm.fromState = null;
+        vm.snackbarHidden = true;
+        vm.snackbarMessage = '';
 
         vm.add = add;
         vm.back = back;
@@ -37,6 +39,11 @@
             vm.backHidden = !toState.data.back;
             vm.fromState = fromState.name ? fromState.name : toState.data.back;
             vm.validHidden = !toState.data.valid;
+        });
+
+        snackbar.listen(function(show, message) {
+            vm.snackbarHidden = !show;
+            vm.snackbarMessage = message;
         });
 
         function add() {
