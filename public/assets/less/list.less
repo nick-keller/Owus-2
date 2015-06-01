@@ -13,14 +13,14 @@
         text-decoration: none;
     }
 
-    &.iconic {
+    &.iconic, &.avatar {
         > * {
             padding-left: 72px;
             position: relative;
 
-            .material-icons {
+            .material-icons, .picture {
                 .resize(40px);
-                text-align: center;
+                text-align: left;
                 line-height: 40px;
                 position: absolute;
                 top: 50%;
@@ -28,6 +28,29 @@
                 left: 16px;
                 color: @dark-gray;
             }
+        }
+
+        &.two-line {
+            > * {
+                height: 72px;
+                line-height: 20px;
+                padding-top: 16px;
+                padding-bottom: 16px;
+                .box-sizing();
+
+                small {
+                    display: block;
+                    font-size: 14px;
+                    color: @dark-gray;
+                }
+            }
+        }
+    }
+
+    &.avatar {
+        > * {
+            height: 56px;
+            line-height: 56px;
         }
     }
 }

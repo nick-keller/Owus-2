@@ -1,4 +1,10 @@
 <div tabs="[{name:'Tout', id:'all'}, {name:'Dettes', id:'debts'}, {name:'Prêts', id:'loans'}]"></div>
-<section>
-    bonjour
+<section class="full-width">
+    <div class="list avatar two-line">
+        <a ng-repeat="expense in ctrl.expenses">
+            <div picture="expense.payer"></div>
+            {{ expense.title }}
+            <small>{{ expense.date | date }}</small>
+        </a>
+    </div>
 </section>

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var repository = require('../repository/expenseRepository');
 
 var ExpenseSchema = new Schema({
     payer: {
@@ -31,5 +32,7 @@ var ExpenseSchema = new Schema({
         }
     }
 });
+
+ExpenseSchema.statics.findWithUser = repository.findWithUser;
 
 mongoose.model('Expense', ExpenseSchema);

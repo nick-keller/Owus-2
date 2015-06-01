@@ -12,6 +12,11 @@ module.exports = {
             path: '/',
             method: 'POST',
             middleware: crud.create
+        },
+        mine: {
+            path: '/mine',
+            method: 'GET',
+            middleware: controller.mine
         }
     }
 };
