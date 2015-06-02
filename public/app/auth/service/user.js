@@ -13,6 +13,7 @@
         _self.logIn = logIn;
         _self.checkStatus = checkStatus;
         _self.getFromId = getFromId;
+        _self.eq = eq;
 
         function isLoggedIn() {
             return _self.current !== null;
@@ -59,6 +60,10 @@
             }
 
             return null;
+        }
+
+        function eq(user1, user2) {
+            return user1._id === user2._id;
         }
     }
 })();

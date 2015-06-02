@@ -1,7 +1,7 @@
-<div tabs="[{name:'Tout', id:'all'}, {name:'Dettes', id:'debts'}, {name:'Prêts', id:'loans'}]"></div>
+<div tabs="[{name:'Tout', id:'all'}, {name:'Dettes', id:'debts'}, {name:'Prêts', id:'loans'}]" current="filter"></div>
 <section class="full-width">
     <div class="list avatar two-line">
-        <a ng-repeat="expense in ctrl.expenses">
+        <a ng-repeat="expense in ctrl.expenses | expensesFilter : filter">
             <div picture="expense.payer"></div>
             {{ expense.title }}
             <small>{{ expense.date | date }}</small>
