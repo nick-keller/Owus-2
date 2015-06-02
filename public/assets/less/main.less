@@ -40,6 +40,14 @@ section {
     &.full-width {
         padding: 0;
     }
+
+    &.dark {
+        background: @dark-white;
+        min-height: 100vh;
+        margin-top: -@toolbarHeight;
+        .box-sizing();
+        padding-top: 16px + @toolbarHeight;
+    }
 }
 
 .picture {
