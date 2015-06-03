@@ -4,9 +4,24 @@
     background: @white;
     .border-radius(2px);
     .shadow(1);
-    overflow: auto;
+    overflow: hidden;
+    margin-bottom: 16px;
 
     h1, h2, h3 {
         margin: 24px 16px 16px 16px;
+    }
+
+    p {
+        margin: 16px;
+    }
+
+    > *:last-child {
+        margin-bottom: 24px;
+    }
+
+    .media {
+        position: relative;
+        padding-bottom: 100% * 9 / 16;
+        background: @light-gray;
     }
 }

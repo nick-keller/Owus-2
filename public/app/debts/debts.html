@@ -1,12 +1,15 @@
 <section class="dark">
-    <div class="card">
+    <div class="card" ng-if="ctrl.debtsPos.length">
         <h3>Dettes</h3>
-        <div class="list avatar two-line">
-            <a ng-repeat="debt in ctrl.debts">
-                <div picture="debt.user"></div>
-                {{ debt.user.name }}
-                <small>{{ debt.expenses.length }} déépenses</small>
-            </a>
-        </div>
+        <div class="list avatar two-line" debts="ctrl.debtsPos"></div>
+    </div>
+    <div class="card" ng-if="ctrl.debtsNeg.length">
+        <h3>CrÃ©ances</h3>
+        <div class="list avatar two-line" debts="ctrl.debtsNeg"></div>
+    </div>
+    <div class="card" ng-if="!ctrl.debts.length">
+        <div class="media"></div>
+        <h3>FÃ©licitations</h3>
+        <p>Les bons comptes font les bon amis, vous ne devez d'argent Ã  personne et personne ne vous doit rien !</p>
     </div>
 </section>

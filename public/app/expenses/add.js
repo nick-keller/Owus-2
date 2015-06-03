@@ -2,14 +2,14 @@
     'use strict';
 
     angular.module('app')
-        .controller('ExpensesAddController', ['$rootScope', '$scope', 'Expense', '$state', 'snackbar', ExpensesAddController]);
+        .controller('ExpensesAddController', ['$rootScope', '$scope', 'Expense', '$state', 'snackbar', 'user', ExpensesAddController]);
 
-    function ExpensesAddController($rootScope, $scope, Expense, $state, snackbar) {
+    function ExpensesAddController($rootScope, $scope, Expense, $state, snackbar, user) {
         var vm = this;
 
         vm.action = 'Ajouter';
         vm.expense = new Expense({
-            payer: null,
+            payer: user.current._id,
             recipients: [],
             amount: null,
             title: null

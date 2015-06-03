@@ -6,14 +6,14 @@
     </div>
 
     <div class="field">
-        <input class="has-floating" ng-model="ctrl.expense.title" required>
-        <label class="floating">Quoi ?</label>
+        <input class="has-floating" ng-model="ctrl.expense.title" id="title" required>
+        <label class="floating" for="title">Quoi ?</label>
         <div class="error" ng-bind="ctrl.errors.title"></div>
     </div>
 
     <div class="field">
-        <input class="has-floating" ng-model="ctrl.expense.amount" required>
-        <label class="floating">Combien ?</label>
+        <input class="has-floating" ng-model="ctrl.expense.amount" id="amount" required>
+        <label class="floating" for="amount">Combien ?</label>
         <div class="error" ng-bind="ctrl.errors.amount"></div>
     </div>
 

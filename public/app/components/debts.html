@@ -1,0 +1,18 @@
+<a ng-repeat="debt in debts" toggle="timelineHidden" ng-init="timelineHidden = true">
+    <div picture="debt.user"></div>
+    <div class="secondary-action">
+        {{ Math.abs(debt.amount) | currency : '€' }}
+        <i class="material-icons">
+            more_vert
+            <div class="menu"></div>
+        </i>
+    </div>
+    {{ debt.user.name }}
+    <small>{{ debt.expenses.length }} dépenses</small>
+    <div class="time-line" ng-click="$event.stopPropagation()" slide="timelineHidden">
+        <div ng-repeat="expense in debt.expenses">
+            {{ expense.title }}
+            <small>{{ expense.date|date }}</small>
+        </div>
+    </div>
+</a>

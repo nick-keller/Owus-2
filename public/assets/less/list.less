@@ -11,6 +11,16 @@
         padding: 0 16px;
         color: @black;
         text-decoration: none;
+
+        .secondary-action {
+            float: right;
+            line-height: 24px;
+
+            .material-icons {
+                font-size: 20px;
+                vertical-align: text-bottom;
+            }
+        }
     }
 
     &.iconic, &.avatar {
@@ -18,7 +28,7 @@
             padding-left: 72px;
             position: relative;
 
-            .material-icons, .picture {
+            > .material-icons, > .picture {
                 .resize(40px);
                 text-align: left;
                 line-height: 40px;
@@ -32,11 +42,16 @@
 
         &.two-line {
             > * {
-                height: 72px;
+                height: auto;
                 line-height: 20px;
                 padding-top: 16px;
                 padding-bottom: 16px;
                 .box-sizing();
+
+                > .material-icons, > .picture {
+                    top: 16px;
+                    .transform(none);
+                }
 
                 small {
                     display: block;

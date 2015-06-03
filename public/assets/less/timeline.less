@@ -1,0 +1,41 @@
+@import "mixins/all";
+
+.time-line {
+    overflow: hidden;
+    display: none;
+
+    > * {
+        padding: 0 0 8px 16px;
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            border-left: solid 2px @accent-light;
+            top: 8px;
+            bottom: -8px;
+            left: 3px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            .resize(8px);
+            .border-radius();
+            background: @accent-light;
+            top: 4px;
+            left: 0;
+        }
+
+        &:first-child {
+            margin-top: 24px;
+        }
+
+        &:last-child {
+            &:before {
+                border-left-style: dotted;
+                bottom: 14px;
+            }
+        }
+    }
+}
