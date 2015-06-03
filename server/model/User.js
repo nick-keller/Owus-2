@@ -22,13 +22,15 @@ var UserSchema = new Schema({
         type: String
     },
     facebook_id: {
-        type: String
+        type: String,
+        select: false
     },
     picture: {
         type: String
     },
     access_token: {
-        type: String
+        type: String,
+        select: false
     },
     friends: {
         type: [{

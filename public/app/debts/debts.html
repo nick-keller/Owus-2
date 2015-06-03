@@ -1,5 +1,12 @@
 <section class="dark">
     <div class="card">
         <h3>Dettes</h3>
+        <div class="list avatar two-line">
+            <a ng-repeat="debt in ctrl.debts">
+                <div picture="debt.user"></div>
+                {{ debt.user.name }}
+                <small>{{ debt.expenses.length }} déépenses</small>
+            </a>
+        </div>
     </div>
 </section>

@@ -8,7 +8,7 @@ function findWithUser(user, cb) {
             {payer: user._id},
             {recipients: user._id}
         ]})
-        .populate('payer recipients', '-friends -access_token -facebook_id -__v')
+        .populate('payer recipients', '-friends -__v')
         .exec(cb);
 }
 
@@ -22,7 +22,7 @@ function findDebtsOfUser(user, cb) {
             {payer: user._id},
             {recipients: user._id}
         ]})
-        .populate('payer recipients', '-friends -access_token -facebook_id -__v')
+        .populate('payer recipients', '-friends -__v')
         .exec(function(err, expenses){
             if(err) {
                 return cb(err);

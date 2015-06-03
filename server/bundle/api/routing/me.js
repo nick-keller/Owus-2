@@ -8,6 +8,11 @@ module.exports = {
             path: '/friends',
             method: 'GET',
             middleware: controller.friends
+        },
+        debts: {
+            path: '/debts',
+            method: 'GET',
+            middleware: controller.debts
         }
     }
 };

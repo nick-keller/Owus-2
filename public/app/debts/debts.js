@@ -2,9 +2,11 @@
     'use strict';
 
     angular.module('app')
-        .controller('DebtsController', DebtsController);
+        .controller('DebtsController', ['Debt', DebtsController]);
 
-    function DebtsController() {
+    function DebtsController(Debt) {
         var vm = this;
+
+        vm.debts = Debt.query();
     }
 })();
