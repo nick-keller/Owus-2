@@ -8,5 +8,6 @@
         'ngResource',
         'angular-jwt'
     ];
-    angular.module('app', modules);
+    angular.module('app', modules)
+        .constant('_', window._);
 })();

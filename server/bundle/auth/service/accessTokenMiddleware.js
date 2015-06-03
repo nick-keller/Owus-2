@@ -24,7 +24,7 @@ function check(req, res, next) {
     }
 
     User.findOne({_id: token.user._id})
-        .populate('friends', '_id name picture')
+        .populate('friends', '-friends -__v')
         .exec(function(err, user) {
             if(err) {
                 return next(api.mongooseError(err));

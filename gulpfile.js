@@ -10,6 +10,7 @@ var templateCache = require('gulp-angular-templatecache');
 var paths = {
     concat: [
         'bower_components/jquery/dist/jquery.js',
+        'bower_components/lodash/lodash.js',
         'bower_components/angular/angular.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/angular-cookies/angular-cookies.js',

@@ -1,10 +1,44 @@
 <div tabs="[{name:'Tout', id:'all'}, {name:'Dettes', id:'debts'}, {name:'Prêts', id:'loans'}]" current="filter"></div>
 <section class="full-width">
     <div class="list avatar two-line">
-        <a ng-repeat="expense in ctrl.expenses | expensesFilter : filter">
+        <div ng-repeat="expense in ctrl.expenses | expensesFilter : filter" toggle="detailsVisible">
             <div picture="expense.payer"></div>
+            <div class="secondary-action">
+                {{ expense.amount | currency : '€' }}
+                <i class="material-icons" toggle="menuVisible" ng-click="$event.stopPropagation()">
+                    more_vert
+                    <div class="menu-dismiss" hide="!menuVisible"></div>
+                    <div class="menu" hide="!menuVisible">
+                        <a>
+                            <i class="material-icons">mode_edit</i>
+                            Editer
+                        </a>
+                        <a ng-click="showConfirmDialog = true">
+                            <i class="material-icons">delete</i>
+                            Supprimer
+                        </a>
+                    </div>
+                </i>
+
+                <div class="dialog-dismiss" hide="!showConfirmDialog" ng-click="showConfirmDialog = false"></div>
+                <div class="dialog" hide="!showConfirmDialog">
+                    <h3>Supprimer cette dépense ?</h3>
+                    <p>Cette dépense sera supprimée pour tous les participants.</p>
+                    <div class="actions" ng-click="showConfirmDialog = false">
+                        <a class="btn">Annuler</a>
+                        <a class="btn primary" ng-click="ctrl.delete(expense)">Supprimer</a>
+                    </div>
+                </div>
+            </div>
             {{ expense.title }}
             <small>{{ expense.date | date }}</small>
-        </a>
+            <div ng-click="$event.stopPropagation()" slide="!detailsVisible" class="list user small">
+                <div ng-repeat="user in expense.recipients" style="overflow: hidden">
+                    <div picture="user"></div>
+                    <small class="secondary-action">{{ expense.amount / expense.recipients.length | currency : '€'}}</small>
+                    {{ user.name }}
+                </div>
+            </div>
+        </div>
     </div>
 </section>

@@ -19,6 +19,7 @@
             .material-icons {
                 font-size: 20px;
                 vertical-align: text-bottom;
+                position: relative;
             }
         }
     }
@@ -66,6 +67,20 @@
         > * {
             height: 56px;
             line-height: 56px;
+        }
+    }
+
+    &.user.small {
+        > * {
+            padding: 8px 24px 8px 0;
+            line-height: 24px;
+            height: 24px;
+
+            .picture {
+                display: inline-block;
+                margin-left: -72px;
+                .resize(24px);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@
     "angular-cookies": "~1.4.0",
     "angular-jwt": "~0.0.8",
     "jquery": "~2.1.4",
-    "angular-resource": "~1.4.0"
+    "angular-resource": "~1.4.0",
+    "lodash": "~3.9.3"
   }
 }

@@ -35,8 +35,9 @@ function findDebtsOfUser(user, cb) {
 
                 if(eq(expense.payer, user)) {
                     expense.recipients.forEach(function(recipient){
-                        if(eq(recipient, user)) return;
-                        addDebt(recipient, -pricePerUser, expense);
+                        if(!eq(recipient, user)) {
+                            addDebt(recipient, -pricePerUser, expense);
+                        }
                     });
                 } else {
                     addDebt(expense.payer, pricePerUser, expense);

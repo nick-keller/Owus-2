@@ -17,6 +17,11 @@ module.exports = {
             path: '/mine',
             method: 'GET',
             middleware: controller.mine
+        },
+        delete: {
+            path: '/:id',
+            method: 'DELETE',
+            middleware: crud.remove
         }
     }
 };
