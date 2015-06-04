@@ -18,6 +18,11 @@ module.exports = {
             method: 'GET',
             middleware: controller.mine
         },
+        get: {
+            path: '/:id',
+            method: 'GET',
+            middleware: crud.get
+        },
         delete: {
             path: '/:id',
             method: 'DELETE',

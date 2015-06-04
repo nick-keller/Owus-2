@@ -48,6 +48,17 @@
                             back: 'expenses',
                             valid: true
                         }
+                    })
+                    .state('expenses_edit', {
+                        url: '/expenses/{id}',
+                        templateUrl: 'expenses/form.html',
+                        controller: 'ExpensesEditController',
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Editer',
+                            back: 'expenses',
+                            valid: true
+                        }
                     });
             }
         ])

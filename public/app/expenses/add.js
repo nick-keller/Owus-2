@@ -7,7 +7,6 @@
     function ExpensesAddController($rootScope, $scope, Expense, $state, snackbar, user) {
         var vm = this;
 
-        vm.action = 'Ajouter';
         vm.expense = new Expense({
             payer: user.current._id,
             recipients: [],

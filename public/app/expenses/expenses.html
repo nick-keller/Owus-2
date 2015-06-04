@@ -7,9 +7,9 @@
                 {{ expense.amount | currency : '€' }}
                 <i class="material-icons" toggle="menuVisible" ng-click="$event.stopPropagation()">
                     more_vert
-                    <div class="menu-dismiss" hide="!menuVisible"></div>
-                    <div class="menu" hide="!menuVisible">
-                        <a>
+                    <div class="menu-dismiss hidden" hide="!menuVisible"></div>
+                    <div class="menu hidden" hide="!menuVisible">
+                        <a ui-sref="expenses_edit({id:expense._id})">
                             <i class="material-icons">mode_edit</i>
                             Editer
                         </a>
@@ -20,8 +20,8 @@
                     </div>
                 </i>
 
-                <div class="dialog-dismiss" hide="!showConfirmDialog" ng-click="showConfirmDialog = false"></div>
-                <div class="dialog" hide="!showConfirmDialog">
+                <div class="dialog-dismiss hidden" hide="!showConfirmDialog" ng-click="showConfirmDialog = false"></div>
+                <div class="dialog hidden" hide="!showConfirmDialog">
                     <h3>Supprimer cette dépense ?</h3>
                     <p>Cette dépense sera supprimée pour tous les participants.</p>
                     <div class="actions" ng-click="showConfirmDialog = false">
@@ -32,12 +32,13 @@
             </div>
             {{ expense.title }}
             <small>{{ expense.date | date }}</small>
-            <div ng-click="$event.stopPropagation()" slide="!detailsVisible" class="list user small">
-                <div ng-repeat="user in expense.recipients" style="overflow: hidden">
+            <div ng-click="$event.stopPropagation()" slide="!detailsVisible" class="list user small" style="display: none;">
+                <div ng-repeat="user in expense.recipients">
                     <div picture="user"></div>
                     <small class="secondary-action">{{ expense.amount / expense.recipients.length | currency : '€'}}</small>
                     {{ user.name }}
                 </div>
+                <hr>
             </div>
         </div>
     </div>

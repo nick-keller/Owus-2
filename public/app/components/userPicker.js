@@ -68,7 +68,9 @@
             });
         } else {
             $scope.$watch(function(){return vm.model}, function(value) {
+                console.log(value);
                 if(!value) {
+                    console.log('oui');
                     vm.selected = [];
                     return;
                 }
