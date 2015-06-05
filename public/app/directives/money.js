@@ -16,7 +16,7 @@
                     });
 
                     ngModel.$formatters.push(function(modelValue) {
-                        return modelValue.toString();
+                        return !modelValue ? '' : modelValue.toString();
                     });
 
                     var clean = function($this) {
