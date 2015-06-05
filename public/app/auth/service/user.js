@@ -11,6 +11,7 @@
 
         _self.isLoggedIn = isLoggedIn;
         _self.logIn = logIn;
+        _self.logOut = logOut;
         _self.checkStatus = checkStatus;
         _self.getFromId = getFromId;
         _self.eq = eq;
@@ -22,6 +23,11 @@
         function logIn(accessToken) {
             $cookies.put('access_token', accessToken);
             _self.checkStatus();
+        }
+
+        function logOut() {
+            $cookies.remove('access_token');
+            _self.current = null;
         }
 
         function checkStatus() {

@@ -4,8 +4,8 @@
         {{ Math.abs(debt.amount) | currency : '€' }}
         <i class="material-icons" toggle="menuVisible" ng-click="$event.stopPropagation()">
             more_vert
-            <div class="menu-dismiss" hide="!menuVisible"></div>
-            <div class="menu" hide="!menuVisible">
+            <div class="menu-dismiss hidden" hide="!menuVisible"></div>
+            <div class="menu hidden" hide="!menuVisible">
                 <a ng-if="debt.amount > 0">
                     <i class="material-icons">undo</i>
                     Rembourser

@@ -31,7 +31,7 @@
         function init() {
 
             if(_self.inited) {
-                return;
+                return _self;
             }
 
             _self.inited = true;
