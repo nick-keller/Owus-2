@@ -23,6 +23,11 @@ module.exports = {
             method: 'GET',
             middleware: crud.get
         },
+        edit: {
+            path: '/:id',
+            method: 'PUT',
+            middleware: crud.update
+        },
         delete: {
             path: '/:id',
             method: 'DELETE',

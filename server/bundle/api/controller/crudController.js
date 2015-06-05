@@ -15,7 +15,7 @@ module.exports = function(Model) {
 
     function paramConverter(req, res, next, id) {
         Model.findById(id)
-            .populate(mi.getPopulatable(Model))
+            //.populate(mi.getPopulatable(Model))
             .exec(function(err, data) {
                 if(err) {
                     return next(api.mongooseError(err));
