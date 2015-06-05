@@ -59,6 +59,15 @@
                             back: 'expenses',
                             valid: true
                         }
+                    })
+                    .state('pay_back', {
+                        url: '/pay-back',
+                        templateUrl: 'payBack/payBack.html',
+                        controller: 'PayBackController',
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Rembourser'
+                        }
                     });
             }
         ])
