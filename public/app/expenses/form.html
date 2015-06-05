@@ -12,7 +12,7 @@
     </div>
 
     <div class="field">
-        <input class="has-floating" ng-model="ctrl.expense.amount" id="amount" required>
+        <input class="has-floating" ng-model="ctrl.expense.amount" type="tel" id="amount" money required>
         <label class="floating" for="amount">Combien ?</label>
         <div class="error" ng-bind="ctrl.errors.amount"></div>
     </div>
@@ -23,3 +23,4 @@
         <div class="error" ng-bind="ctrl.errors.recipients"></div>
     </div>
 </section>
+<pre>{{ ctrl.expense.amount }}</pre>
