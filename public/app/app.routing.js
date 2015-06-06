@@ -66,7 +66,8 @@
                         controller: 'PayBackController',
                         controllerAs: 'ctrl',
                         data: {
-                            title: 'Rembourser'
+                            title: 'Rembourser',
+                            valid: true
                         }
                     });
             }

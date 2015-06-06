@@ -19,6 +19,9 @@ body, html {
 
 body{
     padding-top: @toolbarHeight;
+    overflow: hidden;
+    min-height: 100vh;
+    .box-sizing();
 }
 
 *:active, *:focus {
@@ -50,6 +53,26 @@ section {
         padding-bottom: 0;
         overflow: auto;
     }
+
+    &.slide {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: @toolbarHeight;
+        .transition(transform .5s);
+
+        .tabs ~ & {
+            margin-top: 48px;
+        }
+
+        &.left.hidden {
+            .transform(~"translateX(-100%)");
+        }
+
+        &.right.hidden {
+            .transform(~"translateX(100%)");
+        }
+    }
 }
 
 .picture {
@@ -58,6 +81,11 @@ section {
     .border-radius(100%);
     .resize(32px);
     vertical-align: middle;
+
+    &.big-in-middle {
+        margin: auto;
+        .resize(64px);
+    }
 }
 
 hr {
@@ -65,4 +93,9 @@ hr {
     height: 1px !important;
     padding: 0 !important;
     background: @light-gray;
+}
+
+
+.center {
+    text-align: center;
 }

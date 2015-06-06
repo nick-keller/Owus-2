@@ -53,10 +53,20 @@
         vm.select = select;
 
         if(!vm.userPicker) {
-            $scope.$watchCollection(function(){return user.current.friends}, function(value) {
+            var unwatchFriends = $scope.$watchCollection(function(){return user.current.friends;}, function(value) {
                 vm.users = getUserAndItsFriends();
             });
         }
+
+        $scope.$watchCollection(function(){return vm.userPicker;}, function(value) {
+            if(value) {
+                vm.users = value;
+
+                if(unwatchFriends) {
+                    unwatchFriends();
+                }
+            }
+        });
 
         // Bind model to view
         $scope.$watchCollection(function(){return vm.model;}, function() {

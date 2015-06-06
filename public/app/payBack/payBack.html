@@ -1,4 +1,55 @@
-<div tabs="[{name:'Rembourser', id:'give'}, {name:'Encaisser', id:'get'}]"></div>
-<section>
+<div tabs="[{name:'Rembourser', id:'give'}, {name:'Encaisser', id:'get'}]" current="ctrl.action"></div>
+<section class="slide left" hide="ctrl.action != 'give'">
+    <div ng-if="ctrl.usersToGive.length">
+        <div class="field">
+            <button class="input has-floating empty" user-picker="ctrl.usersToGive" ng-model="ctrl.give.user" required></button>
+            <label class="floating">Qui ?</label>
+            <div class="error" ng-bind="ctrl.errors.recipients"></div>
+        </div>
 
+        <div class="field">
+            <input class="has-floating" ng-model="ctrl.give.amount" type="tel" id="amount-give" money required>
+            <label class="floating" for="amount-give">Combien ?</label>
+            <div class="error" ng-bind="ctrl.errors.amount"></div>
+        </div>
+    </div>
+
+    <div ng-if="!ctrl.usersToGive.length" class="center">
+        <div picture="ctrl.currentUser" class="big-in-middle" style="margin-top: 54px"></div>
+        <h3>Félicitations</h3>
+        <p>Vous ne devez rien à personne !</p>
+    </div>
 </section>
+<section class="slide right" hide="ctrl.action != 'get'">
+    <div ng-if="ctrl.usersToGet.length">
+        <div class="field">
+            <button class="input has-floating empty" user-picker="ctrl.usersToGet" ng-model="ctrl.get.user" required></button>
+            <label class="floating">Qui ?</label>
+            <div class="error" ng-bind="ctrl.errors.payer"></div>
+        </div>
+
+        <div class="field">
+            <input class="has-floating" ng-model="ctrl.get.amount" type="tel" id="amount-get" money required>
+            <label class="floating" for="amount-get">Combien ?</label>
+            <div class="error" ng-bind="ctrl.errors.amount"></div>
+        </div>
+    </div>
+
+    <div ng-if="!ctrl.usersToGet.length" class="center">
+        <div picture="ctrl.currentUser" class="big-in-middle" style="margin-top: 54px"></div>
+        <h3>Félicitations</h3>
+        <p>Personne ne vous doit quoi que ce sois !</p>
+    </div>
+</section>
+
+<div class="snackbar" hide="!ctrl.give.target || ctrl.give.target === ctrl.give.amount || ctrl.action != 'give'" style="padding: 24px;">
+    Vous devez <b>{{ ctrl.give.target | currency : '€' }}</b> à {{ ctrl.username(ctrl.give.user) }}, après cette opération
+    <span ng-if="ctrl.give.amount - ctrl.give.target <= 0">vous lui devrez encore {{ ctrl.give.target - ctrl.give.amount | currency : '€' }}.</span>
+    <span ng-if="ctrl.give.amount - ctrl.give.target > 0">ce sera {{ ctrl.gender(ctrl.give.user, 'lui', 'elle') }} qui vous devra {{ ctrl.give.amount - ctrl.give.target | currency : '€' }}.</span>
+</div>
+
+<div class="snackbar" hide="!ctrl.get.target || ctrl.get.target === ctrl.get.amount || ctrl.action != 'get'" style="padding: 24px;">
+    {{ ctrl.username(ctrl.get.user) }} vous doit <b>{{ ctrl.get.target | currency : '€' }}</b>, après cette opération
+    <span ng-if="ctrl.get.amount - ctrl.get.target >= 0"> c'est vous qui lui devrez {{ ctrl.get.amount - ctrl.get.target | currency : '€' }}.</span>
+    <span ng-if="ctrl.get.amount - ctrl.get.target < 0"> {{ ctrl.gender(ctrl.get.user, 'il', 'elle') }} vous devra encore {{ ctrl.get.target - ctrl.get.amount | currency : '€' }}.</span>
+</div>
