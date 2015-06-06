@@ -21,7 +21,7 @@
                 </i>
 
                 <div class="dialog-dismiss hidden" hide="!showConfirmDialog" ng-click="showConfirmDialog = false"></div>
-                <div class="dialog hidden" hide="!showConfirmDialog">
+                <div class="dialog hidden" ng-click="$event.stopPropagation()" hide="!showConfirmDialog">
                     <h3>Supprimer cette dépense ?</h3>
                     <p>Cette dépense sera supprimée pour tous les participants.</p>
                     <div class="actions" ng-click="showConfirmDialog = false">
