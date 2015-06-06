@@ -47,7 +47,6 @@
 
         vm.dialogHidden = true;
         vm.users = vm.userPicker ? vm.userPicker : getUserAndItsFriends();
-        vm.multiple = Array.isArray(vm.model);
         vm.selected = [];
 
         vm.isSelected = isSelected;
@@ -60,27 +59,24 @@
         }
 
         // Bind model to view
-        if(vm.multiple) {
-            $scope.$watchCollection(function(){return vm.model}, function(value) {
+        $scope.$watchCollection(function(){return vm.model;}, function() {
+            vm.multiple = Array.isArray(vm.model);
+
+            if(vm.multiple) {
                 vm.selected = vm.model.map(function(id) {
                     return user.getFromId(id, vm.users);
                 });
-            });
-        } else {
-            $scope.$watch(function(){return vm.model}, function(value) {
-                console.log(value);
-                if(!value) {
-                    console.log('oui');
+            } else {
+                if(!vm.model) {
                     vm.selected = [];
-                    return;
+                } else {
+                    vm.selected = [user.getFromId(vm.model, vm.users)];
                 }
-
-                vm.selected = [user.getFromId(value, vm.users)];
-            });
-        }
+            }
+        });
 
         // Bind view to model
-        $scope.$watchCollection(function(){return vm.selected}, function(value) {
+        $scope.$watchCollection(function(){return vm.selected;}, function() {
 
             if(vm.multiple) {
                 vm.model = vm.selected.map(function(u) {

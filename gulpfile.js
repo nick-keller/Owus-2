@@ -33,7 +33,7 @@ var paths = {
     }
 };
 
-gulp.task('default', ['concat']);
+gulp.task('default', ['concat', 'less']);
 
 gulp.task('watch', ['concat', 'less'], function() {
     gulp.watch(paths.watch.concat, ['concat']);

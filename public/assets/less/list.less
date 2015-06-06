@@ -25,6 +25,11 @@
     }
 
     &.iconic, &.avatar {
+
+        hr {
+            margin-left: 72px;
+        }
+        
         > * {
             padding-left: 72px;
             position: relative;
@@ -73,12 +78,16 @@
     &.user.small {
         position: relative;
         margin-left: -72px;
-        padding-left: 72px;
+        padding: 0 0 0 72px;
 
         > * {
             padding: 8px 24px 8px 0;
             line-height: 24px;
             height: 24px;
+
+            &:first-child {
+                margin-top: 8px;
+            }
 
             .picture {
                 display: inline-block;

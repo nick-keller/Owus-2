@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('ToolbarController', ['$rootScope', '$state', 'snackbar', ToolbarController])
+        .controller('ToolbarController', ['$rootScope', '$state', 'snackbar', 'user', ToolbarController])
         .directive('toolbar', function() {
             return {
                 templateUrl: 'components/toolbar.html',
@@ -13,7 +13,7 @@
             };
         });
 
-    function ToolbarController($rootScope, $state, snackbar) {
+    function ToolbarController($rootScope, $state, snackbar, user) {
         var vm = this;
 
         vm.sidebarHidden = true;
@@ -30,6 +30,7 @@
         vm.add = add;
         vm.back = back;
         vm.valid = valid;
+        vm.logout = logOut;
 
         $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
             vm.title = toState.data.title;
@@ -56,6 +57,11 @@
 
         function valid() {
             $rootScope.$emit('validateDialog');
+        }
+
+        function logOut() {
+            user.logOut();
+            $state.go('auth');
         }
     }
 })();

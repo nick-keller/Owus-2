@@ -4,7 +4,7 @@
         {{ Math.abs(debt.amount) | currency : '€' }}
         <i class="material-icons" toggle="menuVisible" ng-click="$event.stopPropagation()">
             more_vert
-            <div class="menu-dismiss" hide="!menuVisible"></div>
+            <div class="menu-dismiss hidden" hide="!menuVisible"></div>
             <div class="menu hidden" hide="!menuVisible">
                 <a ng-if="debt.amount > 0">
                     <i class="material-icons">undo</i>
@@ -20,7 +20,8 @@
     {{ debt.user.name }}
     <small>{{ debt.expenses.length }} dépenses</small>
     <div class="time-line" ng-click="$event.stopPropagation()" slide="!timelineVisible">
-        <div ng-repeat="expense in debt.expenses">
+        <div ng-repeat="expense in debt.expenses | orderBy : '-date'">
+            <small class="secondary-action">{{ Math.abs(expense.amount / expense.recipients.length) | currency : '€' }}</small>
             {{ expense.title }}
             <small>{{ expense.date|date }}</small>
         </div>
