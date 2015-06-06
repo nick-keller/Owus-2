@@ -6,6 +6,7 @@ module.exports.accessTokenForged = accessTokenForged;
 module.exports.userNotLogedIn = userNotLogedIn;
 module.exports.tokenExpired = tokenExpired;
 module.exports.facebookError = facebookError;
+module.exports.accessDenied = accessDenied;
 
 function notFound(what) {
     return {
@@ -76,5 +77,13 @@ function tokenExpired() {
         status: 401,
         error: 'access_token_expired',
         message: 'User access token has expired.'
+    };
+}
+
+function accessDenied() {
+    return {
+        status: 401,
+        error: 'access_denied',
+        message: 'This page is restricted.'
     };
 }

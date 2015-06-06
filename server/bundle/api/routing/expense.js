@@ -21,17 +21,17 @@ module.exports = {
         get: {
             path: '/:id',
             method: 'GET',
-            middleware: crud.get
+            middleware: [controller.checkUser, crud.get]
         },
         edit: {
             path: '/:id',
             method: 'PUT',
-            middleware: crud.update
+            middleware: [controller.checkUser, crud.update]
         },
         delete: {
             path: '/:id',
             method: 'DELETE',
-            middleware: crud.remove
+            middleware: [controller.checkUser, crud.remove]
         }
     }
 };

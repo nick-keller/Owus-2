@@ -7,7 +7,10 @@
     function ExpensesEditController($rootScope, $scope, Expense, $state, snackbar, user) {
         var vm = this;
 
-        vm.expense = Expense.get({id:$state.params.id});
+        vm.expense = Expense.get({id:$state.params.id}, function(){}, function error() {
+            snackbar.add("Vous ne pouvez pas éditer cette dépense.");
+            $state.go('expenses');
+        });
         vm.errors = {};
 
         var submitListener = $rootScope.$on('validateDialog', function() {
