@@ -61,7 +61,7 @@
                         }
                     })
                     .state('pay_back', {
-                        url: '/pay-back',
+                        url: '/pay-back/:user',
                         templateUrl: 'payBack/payBack.html',
                         controller: 'PayBackController',
                         controllerAs: 'ctrl',

@@ -6,11 +6,11 @@
             more_vert
             <div class="menu-dismiss hidden" hide="!menuVisible"></div>
             <div class="menu hidden" hide="!menuVisible">
-                <a ng-if="debt.amount > 0">
+                <a ng-if="debt.amount > 0" ui-sref="pay_back({user:debt.user._id})">
                     <i class="material-icons">undo</i>
                     Rembourser
                 </a>
-                <a ng-if="debt.amount < 0">
+                <a ng-if="debt.amount < 0" ui-sref="pay_back({user:debt.user._id})">
                     <i class="material-icons">redo</i>
                     Encaisser
                 </a>

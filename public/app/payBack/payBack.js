@@ -7,7 +7,6 @@
     function PayBackController(Expense, snackbar, Debt, $scope, $timeout, user, $rootScope, $state) {
         var vm = this;
 
-        vm.debts = Debt.query();
         vm.give = {
             user: null,
             amount: null
@@ -24,19 +23,37 @@
         vm.username = username;
         vm.gender = gender;
 
-        $scope.$watchCollection(function(){return vm.debts;}, function() {
+        vm.debts = Debt.query(function() {
             vm.usersToGive = filterUsers(1);
             vm.usersToGet = filterUsers(-1);
 
-            if(vm.usersToGive.length === 1) {
-                vm.give.user = vm.usersToGive[0]._id;
-            }
-            if(vm.usersToGet.length === 1) {
-                vm.get.user = vm.usersToGet[0]._id;
-            }
+            if($state.params.user) {
+                vm.debts.forEach(function(debt) {
+                    if(debt.user._id === $state.params.user) {
+                        if(debt.amount > 0) {
+                            vm.give.user = debt.user._id;
+                            vm.give.amount = debt.amount;
+                            vm.give.target = debt.amount;
+                            vm.action = 'give';
+                        } else {
+                            vm.get.user = debt.user._id;
+                            vm.get.amount = -debt.amount;
+                            vm.get.target = -debt.amount;
+                            vm.action = 'get';
+                        }
+                    }
+                });
+            } else {
+                if(vm.usersToGive.length === 1) {
+                    vm.give.user = vm.usersToGive[0]._id;
+                }
+                if(vm.usersToGet.length === 1) {
+                    vm.get.user = vm.usersToGet[0]._id;
+                }
 
-            if(!vm.usersToGive.length && vm.usersToGet.length) {
-                vm.action = 'get';
+                if(!vm.usersToGive.length && vm.usersToGet.length) {
+                    vm.action = 'get';
+                }
             }
         });
 

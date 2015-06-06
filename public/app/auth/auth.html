@@ -1,14 +1,22 @@
 <section class="login">
     <h1>Owus</h1>
 
-    <div class="field">
-        <input class="has-floating" ng-model="accessToken">
-        <label class="floating">Access token</label>
+
+    <div class="dialog-dismiss hidden" hide="!tokenDialogVisible" toggle="tokenDialogVisible"></div>
+    <div class="dialog hidden" hide="!tokenDialogVisible">
+        <input class="has-floating input" ng-model="accessToken" placeholder="Access token">
+        <div class="actions">
+            <button class="btn primary" ng-click="ctrl.manualLogin(accessToken)">Connexion</button>
+        </div>
     </div>
-    <button class="btn white" ng-click="ctrl.manualLogin(accessToken)">Connexion avec ce token</button>
 
     <button class="btn raised" ng-click="ctrl.login()">
         <i class="fa fa-facebook"></i>
         Connexion
+    </button>
+
+    <button class="btn raised" toggle="tokenDialogVisible">
+        <i class="fa fa-bug"></i>
+        Mode dev
     </button>
 </section>
