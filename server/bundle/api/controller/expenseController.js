@@ -17,15 +17,14 @@ function mine(req, res, next){
 }
 
 function checkUser(req, res, next) {
-    console.log(req.entity);
     if(req.entity.payer.equals(req.user._id)) {
-        next();
+        return next();
     }
 
     if(_.some(req.entity.recipients, function(recipient) {
             return recipient.equals(req.user._id);
         })) {
-        next();
+        return next();
     }
 
     next(api.accessDenied());
