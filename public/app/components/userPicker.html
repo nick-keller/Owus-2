@@ -5,7 +5,7 @@
 
 <div class="dialog-dismiss hidden" hide="ctrl.dialogHidden" ng-click="ctrl.dialogHidden = true;$event.stopPropagation()"></div>
 <div class="dialog top hidden" hide="ctrl.dialogHidden">
-    <input ng-model="filter" placeholder="Rechercher..." class="input" ng-if="ctrl.users.length > 5">
+    <input ng-model="filter" placeholder="Rechercher..." class="input" ng-show="ctrl.users.length > 5">
 
     <div class="content" ng-class="{overflow:ctrl.users.length > 5}">
         <a class="chip" active="ctrl.isSelected(user)" ng-repeat="user in ctrl.users | filter:{name:filter} | orderBy : 'name'" ng-click="ctrl.select(user)">
