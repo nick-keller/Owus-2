@@ -11,7 +11,7 @@ module.exports = {
         api: {
             endpoint: 'https://graph.facebook.com',
             exchange_token: '/v2.3/oauth/access_token',
-            profile: '/v2.3/me?fields=id,name,first_name,last_name,gender,email,picture{url},friends',
+            profile: '/v2.3/me?fields=id,name,first_name,last_name,gender,email,picture{url},friends.limit(100){picture{url},name,id}',
             debug_token: '/debug_token'
         }
     },
