@@ -17,7 +17,7 @@
 
         function filterDebts(filter) {
             return vm.debts.filter(function(debt) {
-                return filter > 0 === debt.amount > 0 && debt.amount;
+                return filter > 0 === debt.amount > 0 && debt.amount && Math.abs(debt.amount) >= 0.01;
             });
         }
     }
