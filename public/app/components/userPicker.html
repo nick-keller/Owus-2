@@ -8,7 +8,7 @@
     <input ng-model="filter" placeholder="Rechercher..." class="input" ng-show="ctrl.users.length > 5">
 
     <div class="content" ng-class="{overflow:ctrl.users.length > 5}">
-        <a class="chip" active="ctrl.isSelected(user)" ng-repeat="user in ctrl.users | filter:{name:filter} | orderBy : 'name'" ng-click="ctrl.select(user)">
+        <a class="chip" active="ctrl.isSelected(user)" ng-repeat="user in ctrl.users | filter:{name:filter} | orderBy : mostRecent : false" ng-click="ctrl.select(user)">
             <div picture="user"></div>
             {{ user.name }}
         </a>
