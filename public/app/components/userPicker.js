@@ -38,6 +38,7 @@
                             }
                         }
                     });
+
                 }
             };
         });
@@ -106,6 +107,7 @@
         }
 
         function select(u) {
+            $scope.filter = '';
             if(vm.multiple) {
                 var index = vm.selected.indexOf(u);
                 if(~index) {
