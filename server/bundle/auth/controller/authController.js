@@ -39,7 +39,7 @@ function auth(req, res, next) {
 
                    user.facebook_id = profile.id;
                    user.access_token = token;
-                   user.picture = profile.picture.data.url;
+                   user.picture = 'https://graph.facebook.com/' + profile.id + '/picture';
 
                    ['name', 'first_name', 'last_name', 'email', 'gender'].forEach(function(prop) {
                        user[prop] = profile[prop];
