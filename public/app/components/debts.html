@@ -21,7 +21,10 @@
     <small>{{ debt.expenses.length }} dépenses</small>
     <div class="time-line" ng-click="$event.stopPropagation()" slide="!timelineVisible">
         <div ng-repeat="expense in debt.expenses | orderBy : '-date'">
-            <small class="secondary-action">{{ Math.abs(expense.amount / expense.recipients.length) | currency : '€' }}</small>
+            <small class="secondary-action">
+              <div picture="expense.payer" class="time-line-payer"></div>
+              {{ Math.abs(expense.amount / expense.recipients.length) | currency : '€' }}
+            </small>
             {{ expense.title }}
             <small>{{ expense.date|date }}</small>
         </div>
