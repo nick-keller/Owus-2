@@ -8,9 +8,8 @@
     <input ng-model="filter" placeholder="Rechercher..." class="input" ng-show="ctrl.users.length > 5">
 
     <div class="suggestions-container">
-        Dany
-        <div class="suggestion" ng-repeat="user in user_suggestions">
-            {{ user._id }}COUCOU
+        <div class="suggestion" ng-repeat="user in ctrl.user_suggestions">
+            <div picture="user"></div>
         </div>
     </div>
 

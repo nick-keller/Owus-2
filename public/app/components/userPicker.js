@@ -56,6 +56,7 @@
         if(!vm.userPicker) {
             var unwatchFriends = $scope.$watchCollection(function(){return user.current.friends;}, function(value) {
                 vm.users = getUserAndItsFriends();
+                vm.user_suggestions = vm.users.slice(0,5);
             });
         }
 
@@ -98,8 +99,7 @@
             }
         });
 
-        $scope.user_suggestions = user.current.friends.concat(user.current);
-        console.log($scope.user_suggestions);
+        //$scope.user_suggestions = user.current.friends.concat(user.current);
 
         $scope.mostRecent = function(friend) {
           if (user.eq(user.current, friend)) {

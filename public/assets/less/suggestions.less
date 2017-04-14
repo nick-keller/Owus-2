@@ -1,0 +1,23 @@
+@import "mixins/all";
+
+.suggestions-container {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 10px;
+    text-align: justify;
+    .transition(all .2s ease);
+
+    .suggestion {
+        display: inline-block;
+        width: 20%;
+
+        .picture {
+            .resize(40px);
+            display: block;
+            margin: 0 auto;
+        }
+
+    }
+
+}
