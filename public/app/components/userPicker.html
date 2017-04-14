@@ -7,6 +7,13 @@
 <div class="dialog top hidden" hide="ctrl.dialogHidden">
     <input ng-model="filter" placeholder="Rechercher..." class="input" ng-show="ctrl.users.length > 5">
 
+    <div class="suggestions-container">
+        Dany
+        <div class="suggestion" ng-repeat="user in user_suggestions">
+            {{ user._id }}COUCOU
+        </div>
+    </div>
+
     <div class="content" ng-class="{overflow:ctrl.users.length > 5}">
         <a class="chip" active="ctrl.isSelected(user)" ng-repeat="user in ctrl.users | filter:{name:filter} | orderBy : mostRecent : false" ng-click="ctrl.select(user)">
             <div picture="user"></div>

@@ -98,6 +98,9 @@
             }
         });
 
+        $scope.user_suggestions = user.current.friends.concat(user.current);
+        console.log($scope.user_suggestions);
+
         $scope.mostRecent = function(friend) {
           if (user.eq(user.current, friend)) {
             return -1;
