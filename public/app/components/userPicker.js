@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('UserPickerController', ['user', '$scope', UserPickerController])
+        .controller('UserPickerController', ['user', 'Expense', '$scope', '_', UserPickerController])
         .directive('userPicker', function() {
             return {
                 templateUrl: 'components/userPicker.html',
@@ -43,12 +43,23 @@
             };
         });
 
-    function UserPickerController(user, $scope) {
+    function UserPickerController(user, Expense, $scope, _) {
         var vm = this;
 
         vm.dialogHidden = true;
         vm.users = vm.userPicker ? vm.userPicker : getUserAndItsFriends();
         vm.selected = [];
+        vm.user_suggestions = [];
+
+        Expense.mine().$promise.then(function(expenses) {
+          _.forEachRight(expenses, function(expense) {
+            vm.user_suggestions = _.unionBy(vm.user_suggestions, getOtherUsersFromExpense(expense), "_id");
+            if (vm.user_suggestions.length > 5) {
+              vm.user_suggestions = vm.user_suggestions.slice(0,5);
+              return false;
+            }
+          });
+        });
 
         vm.isSelected = isSelected;
         vm.select = select;
@@ -56,7 +67,6 @@
         if(!vm.userPicker) {
             var unwatchFriends = $scope.$watchCollection(function(){return user.current.friends;}, function(value) {
                 vm.users = getUserAndItsFriends();
-                vm.user_suggestions = vm.users.slice(0,5);
             });
         }
 
@@ -99,8 +109,6 @@
             }
         });
 
-        //$scope.user_suggestions = user.current.friends.concat(user.current);
-
         $scope.mostRecent = function(friend) {
           if (user.eq(user.current, friend)) {
             return -1;
@@ -130,5 +138,24 @@
                 vm.selected = [u];
             }
         }
+
+        /**
+         * Returns all users concerned by the expense except current one
+         */
+        function getOtherUsersFromExpense(expense) {
+
+          var exp_users = expense.recipients;
+
+          if (!_.some(exp_users, expense.payer)) {
+            exp_users.push(expense.payer);
+          }
+
+          _.remove(exp_users, function(u) {
+            return (user.current._id === u._id);
+          });
+
+          return exp_users;
+        }
+
     }
 })();
