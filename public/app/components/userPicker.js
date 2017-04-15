@@ -44,34 +44,24 @@
         });
 
     function UserPickerController(user, Expense, $scope, _) {
+
         var vm = this;
+        const max_suggestions = 5;
 
         vm.dialogHidden = true;
         vm.users = vm.userPicker ? vm.userPicker : getUserAndItsFriends();
         vm.selected = [];
-        vm.user_suggestions = [];
-
-        function getUserSuggestions() {
-          if (vm.user_suggestions.length == 0) {
-            Expense.mine().$promise.then(function(expenses) {
-              _.forEachRight(expenses, function(expense) {
-                vm.user_suggestions = _.unionBy(vm.user_suggestions, getOtherUsersFromExpense(expense), "_id");
-                if (vm.user_suggestions.length > 5) {
-                  vm.user_suggestions = vm.user_suggestions.slice(0,5);
-                  return false;
-                }
-              });
-            });
-          }
-        }
-
         vm.isSelected = isSelected;
         vm.select = select;
+        vm.user_suggestions = [];
+        vm.suggestions_loading = false;
 
         if(!vm.userPicker) {
             var unwatchFriends = $scope.$watchCollection(function(){return user.current.friends;}, function(value) {
                 vm.users = getUserAndItsFriends();
-                getUserSuggestions();
+                if (!vm.suggestions_loading) {
+                  getUserSuggestions();
+                }
             });
         }
 
@@ -119,6 +109,21 @@
             return -1;
           }
           return friend.name;
+        }
+
+        function getUserSuggestions() {
+          vm.suggestions_loading = true;
+          if (vm.user_suggestions.length == 0) {
+            Expense.mine().$promise.then(function(expenses) {
+              _.forEachRight(expenses, function(expense) {
+                vm.user_suggestions = _.unionBy(vm.user_suggestions, getOtherUsersFromExpense(expense), "_id");
+                if (vm.user_suggestions.length > max_suggestions) {
+                  vm.user_suggestions = vm.user_suggestions.slice(0,max_suggestions);
+                  return false;
+                }
+              });
+            });
+          }
         }
 
         function getUserAndItsFriends() {
@@ -171,7 +176,7 @@
           var friend = vm.users.filter(function( obj ) {
             return (obj._id === uid);
           });
-          
+
           return friend ? friend[0] : null;
         }
 
