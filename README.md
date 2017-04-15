@@ -1,5 +1,5 @@
 # Owus 💸🤖
-A powerful and simple expense sharing tool
+Share your expenses with your facebook friends
 
 ## Installation
 - Clone
