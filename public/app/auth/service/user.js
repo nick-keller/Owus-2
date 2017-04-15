@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .service('user', ['$cookies', 'jwtHelper', '$http', user]);
+        .service('user', ['$cookies', 'jwtHelper', '$http','facebookAuth', user]);
 
-    function user($cookies, jwtHelper, $http) {
+    function user($cookies, jwtHelper, $http,facebookAuth) {
         var _self = this;
 
         _self.current = null;
@@ -15,6 +15,9 @@
         _self.checkStatus = checkStatus;
         _self.getFromId = getFromId;
         _self.eq = eq;
+        
+        facebookAuth
+            .init();
 
         function isLoggedIn() {
             return _self.current !== null;
@@ -26,6 +29,7 @@
         }
 
         function logOut() {
+            facebookAuth.logout();
             $cookies.remove('access_token');
             _self.current = null;
         }

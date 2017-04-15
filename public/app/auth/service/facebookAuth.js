@@ -22,6 +22,7 @@
 
         _self.init = init;
         _self.login = login;
+        _self.logout = logout;
         _self.onLogin = onLogin;
 
         /**
@@ -86,6 +87,17 @@
                 response_type: 'code'
             });
         }
+        
+        /**
+         * Logout the user.
+         */
+        function logout() {
+            $window.FB.logout(function(response) {
+              // The user is now logged out
+            });
+        }
+        
+        
 
         /**
          * Set a callback when the user successfully logs in.
