@@ -46,7 +46,7 @@
     function UserPickerController(user, Expense, $scope, _) {
 
         var vm = this;
-        const max_suggestions = 5;
+        const max_suggestions = 8;
 
         vm.dialogHidden = true;
         vm.users = vm.userPicker ? vm.userPicker : getUserAndItsFriends();
