@@ -51,15 +51,19 @@
         vm.selected = [];
         vm.user_suggestions = [];
 
-        Expense.mine().$promise.then(function(expenses) {
-          _.forEachRight(expenses, function(expense) {
-            vm.user_suggestions = _.unionBy(vm.user_suggestions, getOtherUsersFromExpense(expense), "_id");
-            if (vm.user_suggestions.length > 5) {
-              vm.user_suggestions = vm.user_suggestions.slice(0,5);
-              return false;
-            }
-          });
-        });
+        function getUserSuggestions() {
+          if (vm.user_suggestions.length == 0) {
+            Expense.mine().$promise.then(function(expenses) {
+              _.forEachRight(expenses, function(expense) {
+                vm.user_suggestions = _.unionBy(vm.user_suggestions, getOtherUsersFromExpense(expense), "_id");
+                if (vm.user_suggestions.length > 5) {
+                  vm.user_suggestions = vm.user_suggestions.slice(0,5);
+                  return false;
+                }
+              });
+            });
+          }
+        }
 
         vm.isSelected = isSelected;
         vm.select = select;
@@ -67,6 +71,7 @@
         if(!vm.userPicker) {
             var unwatchFriends = $scope.$watchCollection(function(){return user.current.friends;}, function(value) {
                 vm.users = getUserAndItsFriends();
+                getUserSuggestions();
             });
         }
 
@@ -144,17 +149,30 @@
          */
         function getOtherUsersFromExpense(expense) {
 
-          var exp_users = expense.recipients;
+          var exp_users_tmp = expense.recipients;
+          var exp_users = [];
 
-          if (!_.some(exp_users, expense.payer)) {
-            exp_users.push(expense.payer);
+          if (!_.some(exp_users_tmp, expense.payer)) {
+            exp_users_tmp.push(expense.payer);
           }
 
-          _.remove(exp_users, function(u) {
+          _.remove(exp_users_tmp, function(u) {
             return (user.current._id === u._id);
           });
 
+          _.each(exp_users_tmp, function(tmp_user) {
+            exp_users.push(getFriendById(tmp_user._id));
+          });
+
           return exp_users;
+        }
+
+        function getFriendById(uid) {
+          var friend = vm.users.filter(function( obj ) {
+            return (obj._id === uid);
+          });
+          
+          return friend ? friend[0] : null;
         }
 
     }
