@@ -8,7 +8,12 @@
     function ExpensesController(Expense, _, snackbar) {
         var vm = this;
 
-        vm.expenses = Expense.mine();
+        vm.loading = true;
+        vm.expenses = [];
+        Expense.mine().$promise.then(function(expenses) {
+            vm.expenses = expenses;
+            vm.loading = false;
+        });
 
         vm.delete = deleteExpense;
 

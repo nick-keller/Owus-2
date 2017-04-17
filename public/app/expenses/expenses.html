@@ -1,5 +1,8 @@
 <div tabs="[{name:'Tout', id:'all'}, {name:'Dettes', id:'debts'}, {name:'Prêts', id:'loans'}]" current="filter"></div>
 <section class="full-width">
+    <div class="spinner" ng-if="ctrl.loading">
+        <i class="fa fa-circle-o-notch fa-spin fa-2x center"></i>
+    </div>
     <div class="list avatar two-line">
         <div ng-repeat="expense in ctrl.expenses | expensesFilter : filter | orderBy : '-date'" toggle="detailsVisible">
             <div picture="expense.payer"></div>

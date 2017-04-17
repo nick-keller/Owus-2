@@ -7,9 +7,12 @@
         <h3>Créances</h3>
         <div class="list avatar two-line" debts="ctrl.debtsNeg"></div>
     </div>
-    <div class="card" ng-if="!ctrl.debts.length">
+    <div class="card" ng-if="!ctrl.debts.length && !ctrl.loading">
         <div class="media" style="background-image: url('img/chill.png')"></div>
         <h3>Félicitations</h3>
         <p>Les bons comptes font les bon amis, vous ne devez d'argent à personne et personne ne vous doit rien !</p>
+    </div>
+    <div class="spinner" ng-if="ctrl.loading">
+        <i class="fa fa-circle-o-notch fa-spin fa-2x center"></i>
     </div>
 </section>

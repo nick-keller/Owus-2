@@ -7,7 +7,13 @@
     function DebtsController(Debt, user, $scope) {
         var vm = this;
 
-        vm.debts = Debt.query();
+        vm.loading = true;
+        vm.debts = [];
+        Debt.query().$promise.then(function(debts) {
+          vm.debts = debts;
+          vm.loading = false;
+
+        });
         vm.currentUser = user.current;
 
         $scope.$watchCollection(function(){return vm.debts;}, function() {
