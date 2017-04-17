@@ -2,13 +2,14 @@
     'use strict';
 
     angular.module('app')
-        .controller('AuthController', ['facebookAuth', '$http', 'user', '$state', AuthController]);
+        .controller('AuthController', ['facebookAuth', '$http', 'user', '$state', '$stateParams', AuthController]);
 
-    function AuthController(facebookAuth, $http, user, $state) {
+    function AuthController(facebookAuth, $http, user, $state, $stateParams) {
         var vm = this;
 
         vm.login = facebookAuth.login;
         vm.manualLogin = manualLogin;
+        vm.dev = $stateParams.dev;
 
         facebookAuth
             .init()

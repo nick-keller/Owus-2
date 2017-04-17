@@ -10,7 +10,7 @@
 
                 $stateProvider
                     .state('auth', {
-                        url: '/auth',
+                        url: '/auth?dev',
                         templateUrl: 'auth/auth.html',
                         controller: 'AuthController',
                         controllerAs: 'ctrl',
