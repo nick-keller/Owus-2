@@ -18,7 +18,7 @@
         </i>
     </div>
     {{ debt.user.name }}
-    <small>{{ debt.expenses.length }} dépenses</small>
+    <small>{{ debt.expenses.length }} dépense{{ debt.expenses.length > 1 ? 's':'' }}</small>
     <div class="time-line" ng-click="$event.stopPropagation()" slide="!timelineVisible">
         <div ng-repeat="expense in debt.expenses | orderBy : '-date'">
             <small class="secondary-action">
