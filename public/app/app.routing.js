@@ -69,6 +69,15 @@
                             title: 'Rembourser',
                             valid: true
                         }
+                    })
+                    .state('groups_show', {
+                        url: '/groups',
+                        templateUrl: 'groups/groups.html',
+                        controller: 'GroupsController',
+                        controllerAs: 'ctrl',
+                        data: {
+                            title: 'Groupes'
+                        }
                     });
             }
         ])
