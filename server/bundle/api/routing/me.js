@@ -13,6 +13,11 @@ module.exports = {
             path: '/debts',
             method: 'GET',
             middleware: controller.debts
+        },
+        groups: {
+            path: '/groups',
+            method: 'GET',
+            middleware: controller.groups
         }
     }
 };
