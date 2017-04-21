@@ -45,7 +45,7 @@
             if(_self.current === null) {
                 _self.current = jwtHelper.decodeToken(accessToken).user;
                 _self.current.friends = [];
-                _self.current.groups = [];
+                // _self.current.groups = [];
 
                 $http.get('/api/me/friends')
                     .success(function(data) {
@@ -57,7 +57,7 @@
                         _self.current = null;
                     });
 
-                $http.get('/api/me/groups')
+                /*$http.get('/api/me/groups')
                     .success(function(data) {
                         data.forEach(function(group) {
                             _self.current.groups.push(group);
@@ -65,7 +65,7 @@
                     })
                     .error(function(data) {
                         _self.current = null;
-                    });
+                    });*/
             }
         }
 

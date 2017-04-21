@@ -21,3 +21,5 @@ var GroupSchema = new Schema({
 GroupSchema.statics.findGroupsOfUser = repository.findGroupsOfUser;
 
 mongoose.model('Group', GroupSchema);
+
+
