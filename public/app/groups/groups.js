@@ -9,7 +9,13 @@
 
         vm.loading = true;
         vm.groups = [];
-
+        /*console.log(vm.groups);
+        Group.query().$promise.then(function(groups) {
+            console.log(groups);
+            vm.groups = groups;
+            vm.loading = false;
+            console.log(vm.groups);
+        });*/
 
     }
 })();

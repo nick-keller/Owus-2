@@ -16,7 +16,7 @@ var GroupSchema = new Schema({
             ref: 'User'
         }]
     }
-});
+}, { collection: 'user_group' });
 
 GroupSchema.statics.findGroupsOfUser = repository.findGroupsOfUser;
 

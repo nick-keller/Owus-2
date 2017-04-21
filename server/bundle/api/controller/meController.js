@@ -21,7 +21,7 @@ function debts(req, res, next) {
     });
 }
 
-function groups(req, res) {
+function groups(req, res, next) {
     Group.findGroupsOfUser(req.user, function(err, groups) {
         if(err) {
             return next(api.mongooseError(err));
