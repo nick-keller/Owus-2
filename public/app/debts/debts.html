@@ -1,13 +1,16 @@
 <section class="dark">
     <div class="card" ng-if="ctrl.debtsPos.length">
-        <h3>Dettes
-            <small>{{ ctrl.debtsPosTotal | currency : '€' }}</small>
+        <h3>
+          Dettes
+          <small>{{ ctrl.debtsPosTotal | currency : '€' }}</small>
         </h3>
         <div class="list avatar two-line" debts="ctrl.debtsPos"></div>
     </div>
     <div class="card" ng-if="ctrl.debtsNeg.length">
-        <h3>Créances</h3>
-        <small>{{ ctrl.debtsNegTotal | currency : '€' }}</small>
+        <h3>
+          Créances
+          <small>{{ ctrl.debtsNegTotal | currency : '€' }}</small>
+        </h3>
         <div class="list avatar two-line" debts="ctrl.debtsNeg"></div>
     </div>
     <div class="card" ng-if="!ctrl.debts.length && !ctrl.loading">
