@@ -19,6 +19,12 @@
         $scope.$watchCollection(function(){return vm.debts;}, function() {
             vm.debtsPos = filterDebts(1);
             vm.debtsNeg = filterDebts(-1);
+            vm.debtsPosTotal = _.reduce(vm.debtsPos, function(sum, debt) {
+                return sum + Math.abs(debt.amount);
+            }, 0);
+            vm.debtsNegTotal = _.reduce(vm.debtsNeg, function(sum, debt) {
+                return sum + Math.abs(debt.amount);
+            }, 0);
         });
 
         function filterDebts(filter) {
